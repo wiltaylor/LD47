@@ -7,7 +7,9 @@ export(float) var TimeToLive: float = 10.0
 
 func _on_hit(body):
 	if body == Owner:
-		return	
+		return
+		
+	queue_free()
 		
 
 func _process(delta):
