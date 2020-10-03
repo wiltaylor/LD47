@@ -132,6 +132,9 @@ func _on_object_leave_vision(body):
 	if State == AIState.Dead:
 		return
 		
+	if body.owner == null:
+		return
+		
 	if body.owner.name == "Player":
 		State = AIState.LookingForPlayer
 		currentSearchTime = LookingDuration
