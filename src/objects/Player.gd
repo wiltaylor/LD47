@@ -21,5 +21,9 @@ func _process(delta):
 		
 	if Input.is_action_pressed("move_right"):
 		vel.x += speed * delta
+		
+	if Input.is_action_just_pressed("shoot"):
+		rig.shoot()
+		
 	
 	rig.move(vel)

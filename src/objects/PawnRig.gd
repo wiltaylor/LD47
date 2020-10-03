@@ -7,6 +7,9 @@ enum IconType { Alert, Question, Angry }
 export(Direction) var Facing = Direction.Down
 export(Sex) var Gender = Sex.Male
 export(int) var Bands = 0
+export (float) var projectileSpeed: float = 500;
+export (float) var BandSpawnOffset: float = 20
+
 export(Texture) var HeadDown: Texture
 export(Texture) var HeadLeft: Texture
 export(Texture) var HeadRight: Texture
@@ -117,7 +120,42 @@ func is_attacking():
 	handled_attack = true
 	
 	return true
+
+func shoot():
+	var scene = load("res://objects/Projectile.tscn")
+	var inst = scene.instance()
 	
+	var vel = Vector2(0, 0)
+	
+	inst.position = self.global_position
+	attacking = true
+	
+	if Facing == Direction.Down:
+		vel.y = projectileSpeed
+		inst.position.y += BandSpawnOffset
+		
+	if Facing == Direction.Up:
+		vel.y = -projectileSpeed
+		inst.position.y -= BandSpawnOffset * 2 # We don't want it showing over the top when facing up but still do when facing down
+		
+	if Facing == Direction.Left:
+		vel.x = -projectileSpeed
+		inst.position.x -= BandSpawnOffset
+		
+	if Facing == Direction.Right:
+		vel.x = projectileSpeed
+		inst.position.x += BandSpawnOffset
+	
+	
+	
+	inst.Setup(self, vel)
+	#proj.Owner = self
+	#proj.Velocity = vel	
+	
+	var game = get_tree().get_root().get_node("Game")
+	#remove_child(inst)
+	game.add_child(inst)
+
 	
 func move(vel: Vector2):
 	move_and_collide(vel)
