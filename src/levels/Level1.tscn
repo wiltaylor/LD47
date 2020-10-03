@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Tree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/AINPC.tscn" type="PackedScene" id=4]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 709.5, 91.5, 513, 96.5, 546, 33.5, 714, -205, 451, 33.5, 478.5, 96.5, 478, 286, 328.5, 100.5, 321, -30.5, 446.5, -105.5, 166, -213.5, 543.5, -114, 247, -36, 162, 62.5, 223.5, 63, 241, 96, 221.5, 93.5, 161.5, 286.5, 161, 93.5 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 2, 1, 5 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 4, 8, 10 ), PoolIntArray( 3, 2, 11 ), PoolIntArray( 10, 3, 11, 9 ), PoolIntArray( 10, 8, 12 ), PoolIntArray( 13, 10, 12, 14 ), PoolIntArray( 14, 12, 15, 16 ), PoolIntArray( 7, 6, 17, 18, 15 ), PoolIntArray( 15, 18, 16 ) ]
+outlines = [ PoolVector2Array( 478, 286, 161.5, 286.5, 161, 93.5, 221.5, 93.5, 223.5, 63, 162, 62.5, 166, -213.5, 714, -205, 709.5, 91.5, 513, 96.5, 478.5, 96.5 ), PoolVector2Array( 321, -30.5, 247, -36, 241, 96, 328.5, 100.5 ), PoolVector2Array( 446.5, -105.5, 451, 33.5, 546, 33.5, 543.5, -114 ) ]
 
 [node name="Game" type="Node2D"]
 
@@ -26,3 +31,10 @@ position = Vector2( 323.665, 200.944 )
 
 [node name="AINPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 242.5, -144 )
+WaitingTurnRate = 5.0
+LookingDuration = 5.0
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
