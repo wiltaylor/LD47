@@ -8,7 +8,10 @@ export(float) var TimeToLive: float = 10.0
 func _on_hit(body):
 	if body == Owner:
 		return
-		
+	
+	if body.has_method("band_hit"):
+		body.band_hit()
+	
 	queue_free()
 		
 

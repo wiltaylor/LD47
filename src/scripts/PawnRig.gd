@@ -60,6 +60,9 @@ onready var band2Side: Sprite = get_node("Body/band2_side")
 onready var band3Side: Sprite = get_node("Body/band3_side")
 onready var Icon: Sprite = get_node("Icon")
 
+func band_hit():
+	Bands += 1
+
 func is_dead():
 	
 	if death == false:

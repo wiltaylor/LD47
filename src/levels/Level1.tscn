@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/AINPC.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node2D"]
 
@@ -22,3 +23,6 @@ position = Vector2( 497.5, -39.5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 323.665, 200.944 )
+
+[node name="AINPC" parent="." instance=ExtResource( 4 )]
+position = Vector2( 242.5, -144 )
