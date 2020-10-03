@@ -9,8 +9,6 @@ func _on_hit(body):
 	if body == Owner:
 		return	
 		
-	print("hit something")
-		
 
 func _process(delta):
 	
@@ -18,7 +16,6 @@ func _process(delta):
 	
 	if TimeToLive <= 0:
 		queue_free()
-		print("timed out")
 	
 	self.position += Velocity * delta
 

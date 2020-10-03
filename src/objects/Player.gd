@@ -7,6 +7,15 @@ export(int) var maxAmmor: int = 10;
 
 onready var rig = get_node("PawnRig")
 
+var useable: Node = null
+
+func EnterUseRange(node: Node):
+	useable = node
+	
+func ExitUseRange(node: Node):
+	if useable == node:
+		useable = null
+
 func _process(delta):
 	
 	var vel = Vector2(0,0)
@@ -28,5 +37,8 @@ func _process(delta):
 		ammo -= 1		
 		rig.shoot()
 		
+	if Input.is_action_just_pressed("use"):
+		if useable != null:
+			useable.use()
 	
 	rig.move(vel)

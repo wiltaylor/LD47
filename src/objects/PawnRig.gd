@@ -146,14 +146,9 @@ func shoot():
 		vel.x = projectileSpeed
 		inst.position.x += BandSpawnOffset
 	
-	
-	
 	inst.Setup(self, vel)
-	#proj.Owner = self
-	#proj.Velocity = vel	
 	
 	var game = get_tree().get_root().get_node("Game")
-	#remove_child(inst)
 	game.add_child(inst)
 
 	
