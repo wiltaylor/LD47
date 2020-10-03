@@ -3,7 +3,7 @@ extends Node2D
 
 export(float) var speed: float = 1.0
 export(int) var ammo: int = 10;
-export(int) var maxAmmor: int = 10;
+export(int) var maxAmmo: int = 10;
 export(bool) var hasBlueCard = false
 export(bool) var hasRedCard = false
 

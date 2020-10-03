@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/Scissors.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/BlueCard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/RedCard.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/Band_Box.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 709.5, 91.5, 513, 96.5, 546, 33.5, 714, -205, 451, 33.5, 478.5, 96.5, 478, 286, 328.5, 100.5, 321, -30.5, 446.5, -105.5, 166, -213.5, 543.5, -114, 247, -36, 162, 62.5, 223.5, 63, 241, 96, 221.5, 93.5, 161.5, 286.5, 161, 93.5 )
@@ -31,6 +32,10 @@ position = Vector2( 497.5, -39.5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 323.665, 200.944 )
+maxAmmo = 20
+
+[node name="Band_Box" parent="Player" instance=ExtResource( 8 )]
+position = Vector2( 86.359, -215.008 )
 
 [node name="AINPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 242.5, -144 )
