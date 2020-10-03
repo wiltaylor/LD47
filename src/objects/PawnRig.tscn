@@ -1,0 +1,341 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://objects/PawnRig.gd" type="Script" id=1]
+[ext_resource path="res://sprites/objects/body.png" type="Texture" id=2]
+[ext_resource path="res://sprites/objects/hand.png" type="Texture" id=3]
+[ext_resource path="res://sprites/objects/face.png" type="Texture" id=4]
+[ext_resource path="res://sprites/objects/head.png" type="Texture" id=5]
+[ext_resource path="res://sprites/objects/hair.png" type="Texture" id=6]
+[ext_resource path="res://sprites/objects/eye_r.png" type="Texture" id=7]
+[ext_resource path="res://sprites/objects/eye_l.png" type="Texture" id=8]
+[ext_resource path="res://sprites/objects/body-side.png" type="Texture" id=9]
+[ext_resource path="res://sprites/objects/band_body.png" type="Texture" id=10]
+[ext_resource path="res://sprites/objects/alert.png" type="Texture" id=11]
+[ext_resource path="res://sprites/objects/question.png" type="Texture" id=12]
+[ext_resource path="res://sprites/objects/angry.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.1446, 31.7311 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "attack_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hand_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, 8 ), Vector2( 10.7164, 2.09412 ), Vector2( 11.8976, -0.661957 ), Vector2( 13, 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -13, 8 ), Vector2( -5.04675, 5.87389 ), Vector2( -8.66902, 11.386 ), Vector2( -13, 8 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "attack_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hand_L:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -13, 8 ), Vector2( -13.315, 12.331 ), Vector2( -13, 8 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "attack_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hand_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, 8 ), Vector2( 10.1652, -0.0319977 ), Vector2( 13, 8 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "attack_up"
+
+[sub_resource type="Animation" id=7]
+resource_name = "dead"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1.9865 ), Vector2( 0.198654, -1.5892 ), Vector2( 0, 0 ), Vector2( -2.84731, -5.76083 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 80.6, 99.4, 90.0, 103.8, 90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "dying"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_down"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hand_R:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, 8 ), Vector2( 12.7898, 9.57668 ), Vector2( 13, 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -13, 8 ), Vector2( -12.054, 7.57955 ), Vector2( -13, 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.19603, -23.0633 ), Vector2( -0.0141907, -19.5946 ), Vector2( 0.19603, -23.0633 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.460907, -20.2822 ), Vector2( 0.19603, -23.0633 ), Vector2( 0.19603, -21.2092 ), Vector2( 0.19603, -23.0633 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand_L:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -13, 8 ), Vector2( -11.6757, 8.3973 ), Vector2( -13, 8 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle_right"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.19603, -23.0633 ), Vector2( 0.0635986, -20.2822 ), Vector2( 0.19603, -23.0633 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hand_R:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, 8 ), Vector2( 11.6757, 6.94054 ), Vector2( 13, 8 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_up"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.19603, -23.0633 ), Vector2( 0.19603, -20.6795 ), Vector2( 0.19603, -23.0633 ) ]
+}
+
+[node name="PawnRig" type="KinematicBody2D"]
+script = ExtResource( 1 )
+HeadDown = ExtResource( 5 )
+HeadLeft = ExtResource( 5 )
+HeadRight = ExtResource( 5 )
+HeadUp = ExtResource( 5 )
+BodyDown = ExtResource( 2 )
+BodyUp = ExtResource( 2 )
+BodyLeft = ExtResource( 9 )
+BodyRight = ExtResource( 9 )
+FaceDown = ExtResource( 4 )
+FaceLeft = ExtResource( 8 )
+FaceRight = ExtResource( 7 )
+HairDown = ExtResource( 6 )
+HairUp = ExtResource( 6 )
+HairRight = ExtResource( 6 )
+HairLeft = ExtResource( 6 )
+Hand = ExtResource( 3 )
+AlertIcon = ExtResource( 11 )
+QuestionIcon = ExtResource( 12 )
+AngryIcon = ExtResource( 13 )
+
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+
+[node name="band1" type="Sprite" parent="Body"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="band2" type="Sprite" parent="Body"]
+visible = false
+rotation = 1.5708
+texture = ExtResource( 10 )
+
+[node name="band3" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( -0.0624983, 0.3125 )
+rotation = 0.760963
+scale = Vector2( 0.70513, 0.692229 )
+texture = ExtResource( 10 )
+
+[node name="band1_side" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( -0.315334, 1.89202 )
+scale = Vector2( 0.704372, 0.710942 )
+texture = ExtResource( 10 )
+
+[node name="band2_side" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( 0.105113, 1.15624 )
+rotation = 1.5708
+scale = Vector2( 0.73065, 0.717511 )
+texture = ExtResource( 10 )
+
+[node name="band3_side" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( -0.00994301, 0.680394 )
+rotation = 0.760963
+scale = Vector2( 0.514719, 0.506367 )
+texture = ExtResource( 10 )
+
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( 0.19603, -23.0633 )
+texture = ExtResource( 5 )
+
+[node name="Hair" type="Sprite" parent="Head"]
+position = Vector2( -0.19603, 0.0632935 )
+texture = ExtResource( 6 )
+
+[node name="Face" type="Sprite" parent="Head"]
+position = Vector2( -0.19603, 2.06329 )
+texture = ExtResource( 7 )
+
+[node name="Hand_R" type="Sprite" parent="."]
+position = Vector2( 13, 8 )
+texture = ExtResource( 3 )
+
+[node name="Hand_L" type="Sprite" parent="."]
+position = Vector2( -13, 8 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.265175, -0.353548 )
+shape = SubResource( 1 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+method_call_mode = 1
+anims/attack_down = SubResource( 8 )
+anims/attack_left = SubResource( 9 )
+anims/attack_right = SubResource( 10 )
+anims/attack_up = SubResource( 11 )
+anims/dead = SubResource( 7 )
+anims/dying = SubResource( 6 )
+anims/idle_down = SubResource( 2 )
+anims/idle_left = SubResource( 4 )
+anims/idle_right = SubResource( 5 )
+anims/idle_up = SubResource( 3 )
+
+[node name="Icon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 11.6674, -38.5761 )
+texture = ExtResource( 11 )
