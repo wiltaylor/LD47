@@ -259,7 +259,7 @@ QuestionIcon = ExtResource( 12 )
 AngryIcon = ExtResource( 13 )
 
 [node name="Body" type="Sprite" parent="."]
-texture = ExtResource( 9 )
+texture = ExtResource( 2 )
 
 [node name="band1" type="Sprite" parent="Body"]
 visible = false
@@ -307,7 +307,7 @@ texture = ExtResource( 6 )
 
 [node name="Face" type="Sprite" parent="Head"]
 position = Vector2( -0.19603, 2.06329 )
-texture = ExtResource( 7 )
+texture = ExtResource( 4 )
 
 [node name="Hand_R" type="Sprite" parent="."]
 position = Vector2( 13, 8 )

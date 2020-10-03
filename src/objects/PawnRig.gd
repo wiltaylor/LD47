@@ -117,6 +117,23 @@ func is_attacking():
 	handled_attack = true
 	
 	return true
+	
+	
+func move(vel: Vector2):
+	move_and_collide(vel)
+	
+	if vel.x < 0:
+		Facing = Direction.Left
+	
+	if vel.x > 0:
+		Facing = Direction.Right
+		
+	if vel.y > 0:
+		Facing = Direction.Down
+		
+	if vel.y < 0:
+		Facing = Direction.Up
+		
 
 func _process(delta):
 

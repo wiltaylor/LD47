@@ -1,13 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://objects/PawnRig.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
 
 [node name="DebugLevel" type="Node2D"]
 
-[node name="PawnRig" parent="." instance=ExtResource( 1 )]
-position = Vector2( 529.501, 277.226 )
-Facing = 2
-Bands = 4
-attacking = true
-AlertTime = 5.0
-AlertType = 1
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 474, 262 )
+speed = 300.0
