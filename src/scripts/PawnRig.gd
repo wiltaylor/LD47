@@ -91,6 +91,8 @@ func is_dead():
 	Anim.play("dying")
 	Anim.queue("dead")
 	
+	get_node("CollisionShape2D").queue_free()
+	
 	handled_death = true	
 	
 	return true

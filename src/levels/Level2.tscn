@@ -80,7 +80,7 @@ rotation = 1.5708
 [node name="LevelTransition" parent="TileMap" instance=ExtResource( 3 )]
 position = Vector2( 1696.55, -1647.72 )
 rotation = 1.57952
-ScenePath = "res://levels/Ending.tscn"
+ScenePath = "res://levels/Level3.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -94.2965, 550.69 )
