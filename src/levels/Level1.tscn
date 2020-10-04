@@ -107,7 +107,7 @@ position = Vector2( 901.304, 499.485 )
 
 [node name="LevelTransition" parent="." instance=ExtResource( 9 )]
 position = Vector2( -1814.01, -2368.56 )
-ScenePath = "res://levels/Ending.tscn"
+ScenePath = "res://levels/Level2.tscn"
 
 [node name="Band_Box" parent="." instance=ExtResource( 8 )]
 position = Vector2( 617.395, 397.239 )
