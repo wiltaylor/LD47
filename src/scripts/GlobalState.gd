@@ -1,4 +1,4 @@
 extends Node2D
 
-var player = "business"
-var enemy = "business"
+var player = "army"
+var enemy = "army"

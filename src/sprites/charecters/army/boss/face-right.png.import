@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/face_right.png-8e80c6fc36d1c0ee0c3302d9cd9cee1a.stex"
+path="res://.import/face-right.png-0b67647b86f1c27b2ddd22332cfd85f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/charecters/army/veteran/face_right.png"
-dest_files=[ "res://.import/face_right.png-8e80c6fc36d1c0ee0c3302d9cd9cee1a.stex" ]
+source_file="res://sprites/charecters/army/boss/face-right.png"
+dest_files=[ "res://.import/face-right.png-0b67647b86f1c27b2ddd22332cfd85f3.stex" ]
 
 [params]
 
