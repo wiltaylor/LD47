@@ -202,7 +202,7 @@ func has_eyes_on_player():
 		var space_state = get_world_2d().direct_space_state
 		var result = space_state.intersect_ray(global_position, playerRig.global_position, [rig])
 				
-		if result != null && result.collider == playerRig:
+		if result != null && result.collider != null && result.collider == playerRig:
 			return true
 			
 		return false
