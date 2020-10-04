@@ -170,12 +170,18 @@ func _on_object_seen(body):
 	if State == AIState.Dead:
 		return 
 		
-	if body.owner.name == "Player":		
-		State = AIState.AttackingPlayer
-		rig.AlertType = rig.IconType.Alert
-		rig.AlertTime = 2
+	if body.owner.name == "Player":
 		
-		print("on guard!")
+		var space_state = get_world_2d().direct_space_state
+		var result = space_state.intersect_ray(global_position, body.global_position, [rig])
+		
+		if result != null:
+			print(result.collider.owner.name)
+		
+		if result != null && result.collider == body:
+			State = AIState.AttackingPlayer
+			rig.AlertType = rig.IconType.Alert
+			rig.AlertTime = 2
 
 
 func _on_object_leave_vision(body):
@@ -183,6 +189,9 @@ func _on_object_leave_vision(body):
 		return
 		
 	if body.owner == null:
+		return
+		
+	if State != AIState.AttackingPlayer:
 		return
 		
 	if body.owner.name == "Player":
@@ -193,4 +202,4 @@ func _on_object_leave_vision(body):
 
 		lastKnownPoint = playerRig.global_position
 		create_path(lastKnownPoint)
-		print("I will find you!")
+
