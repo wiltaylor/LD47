@@ -13,6 +13,7 @@ onready var player = get_tree().get_root().find_node("Player", true, false)
 onready var staticBody = get_node("StaticBody2D")
 onready var sprite = get_node("Sprite")
 onready var useArea = get_node("UseArea")
+onready var OpenSfx = get_node("OpenSfx")
 
 func _ready():
 	if LockType == DoorLockType.Red:
@@ -44,6 +45,7 @@ func use():
 	
 	staticBody.queue_free()
 	useArea.queue_free()
+	OpenSfx.play()
 	
 	sprite.texture = OpenTexture
 	

@@ -9,6 +9,7 @@ script = ExtResource( 2 )
 speed = 200.0
 
 [node name="PawnRig" parent="." instance=ExtResource( 1 )]
+PlayPlayerSFX = true
 
 [node name="Camera2D" type="Camera2D" parent="PawnRig"]
 current = true

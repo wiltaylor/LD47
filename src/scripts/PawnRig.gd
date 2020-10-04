@@ -9,6 +9,7 @@ export(Sex) var Gender = Sex.Male
 export(int) var Bands = 0
 export (float) var projectileSpeed: float = 500;
 export (float) var BandSpawnOffset: float = 20
+export(bool) var PlayPlayerSFX = false
 
 export(Texture) var HeadDown: Texture
 export(Texture) var HeadLeft: Texture
@@ -60,8 +61,19 @@ onready var band2Side: Sprite = get_node("RigBody/Body/band2_side")
 onready var band3Side: Sprite = get_node("RigBody/Body/band3_side")
 onready var Icon: Sprite = get_node("Icon")
 
+onready var attackSFX = get_node("AttackSound")
+onready var hitSFX = get_node("HitSound")
+onready var deathSFX = get_node("DeathSound")
+onready var hitSFXplayer = get_node("PlayerHitSound")
+onready var deathSFXplayer = get_node("PlayerDeathSound")
+
 func band_hit():
 	Bands += 1
+	
+	if PlayPlayerSFX:
+		hitSFXplayer.play()
+	else:
+		hitSFX.play()
 
 func is_dead():
 	
@@ -91,6 +103,13 @@ func is_dead():
 	Anim.play("dying")
 	Anim.queue("dead")
 	
+	if PlayPlayerSFX:
+		deathSFXplayer.play()
+		hitSFXplayer.stop()
+	else:
+		deathSFX.play()
+		hitSFX.stop()
+	
 	get_node("CollisionShape2D").queue_free()
 	
 	handled_death = true	
@@ -112,15 +131,19 @@ func is_attacking():
 	if Facing == Direction.Up:
 		Anim.play("attack_up")
 		Anim.queue("idle_up")
+
 	elif Facing == Direction.Down:
 		Anim.play("attack_down")
 		Anim.queue("idle_down")
+
 	elif Facing == Direction.Left:
 		Anim.play("attack_left")
 		Anim.queue("idle_left")
+
 	elif Facing == Direction.Right:
 		Anim.play("attack_right")
 		Anim.queue("idle_right")
+
 		
 	handled_attack = true
 	
@@ -155,6 +178,8 @@ func shoot():
 	
 	var game = get_tree().get_root().get_node("Game")
 	game.add_child(inst)
+	
+	attackSFX.play()
 
 	
 func move(vel: Vector2):
