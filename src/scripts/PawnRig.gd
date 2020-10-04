@@ -74,6 +74,9 @@ func band_hit():
 		hitSFXplayer.play()
 	else:
 		hitSFX.play()
+		
+	AlertTime = 1
+	AlertType = IconType.Angry
 
 func is_dead():
 	
@@ -217,6 +220,8 @@ func _process(delta):
 		Icon.texture = AlertIcon
 	elif AlertType == IconType.Question:
 		Icon.texture = QuestionIcon
+	elif AlertType == IconType.Angry:
+		Icon.texture = AngryIcon
 	
 	if AlertTime > 0:
 		AlertTime -= delta

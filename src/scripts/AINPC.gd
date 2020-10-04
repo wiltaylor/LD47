@@ -172,6 +172,9 @@ func _on_object_seen(body):
 		
 	if body.owner.name == "Player":		
 		State = AIState.AttackingPlayer
+		rig.AlertType = rig.IconType.Alert
+		rig.AlertTime = 2
+		
 		print("on guard!")
 
 
@@ -185,6 +188,9 @@ func _on_object_leave_vision(body):
 	if body.owner.name == "Player":
 		State = AIState.LookingForPlayer
 		currentSearchTime = LookingDuration
+		rig.AlertType = rig.IconType.Question
+		rig.AlertTime = LookingDuration
+
 		lastKnownPoint = playerRig.global_position
 		create_path(lastKnownPoint)
 		print("I will find you!")
