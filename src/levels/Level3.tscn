@@ -41,6 +41,7 @@ position = Vector2( 821.417, -1054.36 )
 
 [node name="AINPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 878.498, -1339.77 )
+UnitType = 3
 
 [node name="AINPC2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 809.525, 354.853 )
@@ -50,7 +51,6 @@ position = Vector2( -20.542, 377.448 )
 
 [node name="AINPC4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 395.68, 270.419 )
-UnitType = 3
 
 [node name="AINPC5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 585.954, 117.012 )

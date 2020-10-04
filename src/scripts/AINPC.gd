@@ -57,6 +57,19 @@ func moveAlongPath(delta):
 			rig.global_position = currentPath[0]
 			currentPath.remove(0)
 		distance_to_travel -= distance_to_point	
+		
+		
+func _physics_process(delta):
+	if State != AIState.LookingForPlayer || currentPath == null:
+		return
+		
+	if rig.global_position.distance_to(currentPath[0]) < 1:
+		currentPath.remove(0)
+		
+		if currentPath.size() == 0:
+			return
+	var vel = (currentPath[0] - rig.global_position).normalized() * MoveSpeed
+	rig.move_and_slide(vel)
 
 func player_dist():
 	return playerRig.global_position.distance_to(rig.global_position)
@@ -65,17 +78,34 @@ func create_path(point: Vector2):
 	currentPath = navMesh.get_simple_path(point, rig.global_position)
 		
 func doAttack(delta):
-
+	face_player()
+	
 	if coolDown > 0:
 		coolDown -= delta;
 		return
-	
+		
+	if has_eyes_on_player() != true:
+		State = AIState.LookingForPlayer
+		currentSearchTime = LookingDuration
+		rig.AlertType = rig.IconType.Question
+		rig.AlertTime = LookingDuration
+
+		lastKnownPoint = playerRig.global_position
+		create_path(lastKnownPoint)
+		return
+		
+	var dir = global_position.direction_to(playerRig.global_position)
+		
 	coolDown = ShootCooldown
-	rig.shoot()
+	rig.shoot(dir)
 
 func doLook(delta):
 	if currentSearchTime <= 0:
 		State = AIState.Waiting
+		return
+		
+	if has_eyes_on_player():
+		State = AIState.AttackingPlayer
 		return
 		
 	currentSearchTime -= delta
@@ -87,7 +117,7 @@ func doLook(delta):
 		return
 		
 	#move_to(lastKnownPoint, delta)
-	moveAlongPath(delta)
+	#moveAlongPath(delta)
 
 
 func correctVisionConeDirection():
@@ -165,6 +195,17 @@ func _process(delta):
 	if State == AIState.LookingForPlayer:
 		doLook(delta)
 
+func has_eyes_on_player():
+		if player_dist() > 200:
+			return false
+			
+		var space_state = get_world_2d().direct_space_state
+		var result = space_state.intersect_ray(global_position, playerRig.global_position, [rig])
+				
+		if result != null && result.collider == playerRig:
+			return true
+			
+		return false
 
 func _on_object_seen(body):	
 	if State == AIState.Dead:
@@ -174,10 +215,7 @@ func _on_object_seen(body):
 		
 		var space_state = get_world_2d().direct_space_state
 		var result = space_state.intersect_ray(global_position, body.global_position, [rig])
-		
-		if result != null:
-			print(result.collider.owner.name)
-		
+				
 		if result != null && result.collider == body:
 			State = AIState.AttackingPlayer
 			rig.AlertType = rig.IconType.Alert
@@ -185,21 +223,38 @@ func _on_object_seen(body):
 
 
 func _on_object_leave_vision(body):
-	if State == AIState.Dead:
+	pass
+	
+	
+func face_player():
+	var pos = playerRig.global_position
+	var y_delta = global_position.y - pos.y
+	
+	if y_delta < 0:
+		y_delta *= -1
+		
+	if y_delta < 20 && pos.x > global_position.x:
+		rig.Facing = rig.Direction.Right
 		return
 		
-	if body.owner == null:
+	if y_delta < 20 && pos.x < global_position.x:
+		rig.Facing = rig.Direction.Left
 		return
 		
-	if State != AIState.AttackingPlayer:
+	if pos.y > global_position.y:
+		rig.Facing = rig.Direction.Down
 		return
 		
-	if body.owner.name == "Player":
-		State = AIState.LookingForPlayer
-		currentSearchTime = LookingDuration
-		rig.AlertType = rig.IconType.Question
-		rig.AlertTime = LookingDuration
+	rig.Facing = rig.Direction.Up
 
-		lastKnownPoint = playerRig.global_position
-		create_path(lastKnownPoint)
 
+
+func _on_PawnRig_is_hit():
+	face_player()
+	State = AIState.LookingForPlayer
+	currentSearchTime = LookingDuration
+	rig.AlertType = rig.IconType.Question
+	rig.AlertTime = LookingDuration
+
+	lastKnownPoint = playerRig.global_position
+	create_path(lastKnownPoint)

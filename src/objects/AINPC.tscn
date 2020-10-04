@@ -5,7 +5,8 @@
 
 [node name="AINPC" type="Node2D"]
 script = ExtResource( 2 )
-WaitingTurnRate = 1.0
+WaitingTurnRate = 5.0
+LookingDuration = 8.0
 
 [node name="PawnRig" parent="." instance=ExtResource( 1 )]
 
@@ -14,5 +15,6 @@ position = Vector2( 0, -0.396851 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
 polygon = PoolVector2Array( 0, 0, 150, 300, -150, 300 )
+[connection signal="is_hit" from="PawnRig" to="." method="_on_PawnRig_is_hit"]
 [connection signal="body_entered" from="VisionCone" to="." method="_on_object_seen"]
 [connection signal="body_exited" from="VisionCone" to="." method="_on_object_leave_vision"]

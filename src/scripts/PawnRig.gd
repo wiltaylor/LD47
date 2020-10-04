@@ -67,6 +67,8 @@ onready var deathSFX = get_node("DeathSound")
 onready var hitSFXplayer = get_node("PlayerHitSound")
 onready var deathSFXplayer = get_node("PlayerDeathSound")
 
+signal is_hit
+
 func band_hit():
 	Bands += 1
 	
@@ -75,6 +77,8 @@ func band_hit():
 	else:
 		hitSFX.play()
 		
+	emit_signal("is_hit")
+	
 	AlertTime = 1
 	AlertType = IconType.Angry
 
@@ -152,7 +156,7 @@ func is_attacking():
 	
 	return true
 
-func shoot():
+func shoot(dir = null):
 	var scene = load("res://objects/Projectile.tscn")
 	var inst = scene.instance()
 	
@@ -161,19 +165,22 @@ func shoot():
 	inst.position = self.global_position
 	attacking = true
 	
-	if Facing == Direction.Down:
+	if dir != null:
+		vel = dir * projectileSpeed
+	
+	elif Facing == Direction.Down:
 		vel.y = projectileSpeed
 		inst.position.y += BandSpawnOffset
 		
-	if Facing == Direction.Up:
+	elif Facing == Direction.Up:
 		vel.y = -projectileSpeed
 		inst.position.y -= BandSpawnOffset * 2 # We don't want it showing over the top when facing up but still do when facing down
 		
-	if Facing == Direction.Left:
+	elif Facing == Direction.Left:
 		vel.x = -projectileSpeed
 		inst.position.x -= BandSpawnOffset
 		
-	if Facing == Direction.Right:
+	elif Facing == Direction.Right:
 		vel.x = projectileSpeed
 		inst.position.x += BandSpawnOffset
 	
