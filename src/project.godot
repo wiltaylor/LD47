@@ -19,6 +19,10 @@ config/name="LD47"
 run/main_scene="res://levels/Intro.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalState="*res://levels/GlobalState.tscn"
+
 [input]
 
 move_up={

@@ -2,18 +2,24 @@ extends Node2D
 
 enum AIState { Waiting, LookingForPlayer, AttackingPlayer, Dead }
 
+enum AIUnitType { Grunt, Veteran, Captain, Boss }
+enum UnitTheme { Kungfu, Business, Army }
+
 onready var rig = get_node("PawnRig")
 onready var player = get_tree().get_root().find_node("Player", true, false)
+onready var globalState = get_tree().get_root().find_node("GlobalState", true, false)
 onready var playerRig = player.get_node("PawnRig")
 onready var visionCone = get_node("VisionCone")
 onready var navMesh = get_tree().get_root().find_node("Navigation2D", true, false)
 
+export(AIUnitType) var UnitType = AIUnitType.Grunt
 export(AIState) var State = AIState.Waiting
 export(float) var WaitingTurnRate = 5
 export(float) var LookingDuration = 1
 export(float) var IdealDistance: float = 30
 export(float) var ShootCooldown: float = 3
 export(float) var MoveSpeed = 50
+export(UnitTheme) var Theme = UnitTheme.Kungfu
 
 var currentWait = 0
 var rng = RandomNumberGenerator.new()
@@ -21,9 +27,12 @@ var currentSearchTime = 0
 var lastKnownPoint: Vector2
 var coolDown = 0
 var currentPath = PoolVector2Array()
+var bossLevelChangeTimeout = 3
 
 func _ready():
-	rng.randomize()	
+	rng.randomize()
+	load_correct_sprites()
+
 
 func doWait(delta):	
 	if currentWait <= 0:
@@ -57,9 +66,6 @@ func create_path(point: Vector2):
 		
 func doAttack(delta):
 
-	#if(player_dist() > IdealDistance):
-	#	move_to(playerRig.global_position, delta)
-
 	if coolDown > 0:
 		coolDown -= delta;
 		return
@@ -82,8 +88,7 @@ func doLook(delta):
 		
 	#move_to(lastKnownPoint, delta)
 	moveAlongPath(delta)
-		
-	
+
 
 func correctVisionConeDirection():
 	if rig.Facing == rig.Direction.Down:
@@ -95,12 +100,54 @@ func correctVisionConeDirection():
 	elif rig.Facing == rig.Direction.Right:
 		visionCone.rotation_degrees = -90
 
+
+func load_correct_sprites():
 	
+	var spriteSetName = globalState.enemy
+	var levelName = "grunt"
+	
+	if UnitType == AIUnitType.Veteran:
+		levelName = "veteran"
+		
+	if UnitType == AIUnitType.Captain:
+		levelName = "captain"
+		
+	if UnitType == AIUnitType.Boss:
+		levelName = "boss"
+	
+	rig.HeadDown = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/head_down.png")
+	rig.HeadLeft = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/head_left.png")
+	rig.HeadRight = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/head_right.png")
+	rig.HeadUp = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/head_up.png")
+	
+	rig.BodyDown = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/body-down.png")
+	rig.BodyLeft = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/body-left.png")
+	rig.BodyRight = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/body-right.png")
+	rig.BodyUp = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/body-up.png")
+
+	rig.FaceDown = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/face-down.png")
+	rig.FaceLeft = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/face-left.png")
+	rig.FaceRight = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/face-right.png")
+	
+	rig.HairDown = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/hair-down.png")
+	rig.HairLeft = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/hair-left.png")
+	rig.HairRight = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/hair-right.png")
+	rig.HairUp = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/hair-up.png")
+	
+	rig.Hand = load("res://sprites/charecters/" + spriteSetName + "/" + levelName + "/hand.png")
 
 func _process(delta):
 	
 	if State == AIState.Dead:
-		return
+		if UnitType != AIUnitType.Boss:
+			return
+		
+		if bossLevelChangeTimeout <= 0:
+			get_tree().change_scene("res://levels/Ending.tscn")
+			return
+			
+		bossLevelChangeTimeout -= delta
+			
 		
 	correctVisionConeDirection()
 		
