@@ -19,6 +19,9 @@ func ExitUseRange(node: Node):
 		useable = null
 
 func _process(delta):
+	if rig == null:
+		return
+	
 	
 	var vel = Vector2(0,0)
 	
