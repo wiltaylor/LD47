@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elevator-doors.png-22a821edaa3b4ff9737ef1a63b7af210.stex"
+path="res://.import/g_bottom_w_top.png-ec3a96dbd8310ed0f0dd2e79baf146bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/elevator-doors.png"
-dest_files=[ "res://.import/elevator-doors.png-22a821edaa3b4ff9737ef1a63b7af210.stex" ]
+source_file="res://sprites/tiles/g_bottom_w_top.png"
+dest_files=[ "res://.import/g_bottom_w_top.png-ec3a96dbd8310ed0f0dd2e79baf146bc.stex" ]
 
 [params]
 

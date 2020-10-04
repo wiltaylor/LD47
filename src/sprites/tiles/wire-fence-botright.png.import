@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elevator-doors.png-22a821edaa3b4ff9737ef1a63b7af210.stex"
+path="res://.import/wire-fence-botright.png-17931e65967c9dd26a717bfe1b339802.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tiles/elevator-doors.png"
-dest_files=[ "res://.import/elevator-doors.png-22a821edaa3b4ff9737ef1a63b7af210.stex" ]
+source_file="res://sprites/tiles/wire-fence-botright.png"
+dest_files=[ "res://.import/wire-fence-botright.png-17931e65967c9dd26a717bfe1b339802.stex" ]
 
 [params]
 
@@ -24,7 +24,7 @@ flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
