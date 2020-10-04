@@ -17,10 +17,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.1446, 31.7311 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=12]
 resource_name = "attack_down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hand_R:position")
+tracks/0/path = NodePath("RigBody/Hand_R:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "values": [ Vector2( 13, 8 ), Vector2( 10.7164, 2.09412 ), Vector2( 11.8976, -0.661957 ), Vector2( 13, 8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hand_L:position")
+tracks/1/path = NodePath("RigBody/Hand_L:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -44,10 +44,10 @@ tracks/1/keys = {
 "values": [ Vector2( -13, 8 ), Vector2( -5.04675, 5.87389 ), Vector2( -8.66902, 11.386 ), Vector2( -13, 8 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=13]
 resource_name = "attack_left"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hand_L:position")
+tracks/0/path = NodePath("RigBody/Hand_L:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -59,10 +59,10 @@ tracks/0/keys = {
 "values": [ Vector2( -13, 8 ), Vector2( -13.315, 12.331 ), Vector2( -13, 8 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=14]
 resource_name = "attack_right"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hand_R:position")
+tracks/0/path = NodePath("RigBody/Hand_R:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -74,10 +74,10 @@ tracks/0/keys = {
 "values": [ Vector2( 13, 8 ), Vector2( 10.1652, -0.0319977 ), Vector2( 13, 8 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=15]
 resource_name = "attack_up"
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=16]
 resource_name = "dead"
 length = 2.0
 loop = true
@@ -88,10 +88,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.4, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -1.9865 ), Vector2( 0.198654, -1.5892 ), Vector2( 0, 0 ), Vector2( -2.84731, -5.76083 ), Vector2( 0, 0 ) ]
+"values": [  ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rotation_degrees")
@@ -100,6 +100,30 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RigBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1.986 ), Vector2( 0.199, -1.589 ), Vector2( 0, 0 ), Vector2( -2.847, -5.761 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RigBody:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.4, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
@@ -109,7 +133,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/path = NodePath("RigBody:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -125,7 +149,7 @@ tracks/0/keys = {
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hand_R:position")
+tracks/0/path = NodePath("RigBody/Hand_R:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -137,7 +161,7 @@ tracks/0/keys = {
 "values": [ Vector2( 13, 8 ), Vector2( 12.7898, 9.57668 ), Vector2( 13, 8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hand_L:position")
+tracks/1/path = NodePath("RigBody/Hand_L:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -149,7 +173,7 @@ tracks/1/keys = {
 "values": [ Vector2( -13, 8 ), Vector2( -12.054, 7.57955 ), Vector2( -13, 8 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Head:position")
+tracks/2/path = NodePath("RigBody/Head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -163,7 +187,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=9]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:position")
+tracks/0/path = NodePath("RigBody/Head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -175,7 +199,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.460907, -20.2822 ), Vector2( 0.19603, -23.0633 ), Vector2( 0.19603, -21.2092 ), Vector2( 0.19603, -23.0633 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hand_L:position")
+tracks/1/path = NodePath("RigBody/Hand_L:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -191,7 +215,7 @@ tracks/1/keys = {
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:position")
+tracks/0/path = NodePath("RigBody/Head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -203,7 +227,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.19603, -23.0633 ), Vector2( 0.0635986, -20.2822 ), Vector2( 0.19603, -23.0633 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Hand_R:position")
+tracks/1/path = NodePath("RigBody/Hand_R:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -219,7 +243,7 @@ tracks/1/keys = {
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:position")
+tracks/0/path = NodePath("RigBody/Head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -253,63 +277,66 @@ AlertIcon = ExtResource( 11 )
 QuestionIcon = ExtResource( 12 )
 AngryIcon = ExtResource( 13 )
 
-[node name="Body" type="Sprite" parent="."]
+[node name="RigBody" type="Node2D" parent="."]
+position = Vector2( 0, -0.662 )
+
+[node name="Body" type="Sprite" parent="RigBody"]
 texture = ExtResource( 2 )
 
-[node name="band1" type="Sprite" parent="Body"]
+[node name="band1" type="Sprite" parent="RigBody/Body"]
 visible = false
 texture = ExtResource( 10 )
 
-[node name="band2" type="Sprite" parent="Body"]
+[node name="band2" type="Sprite" parent="RigBody/Body"]
 visible = false
 rotation = 1.5708
 texture = ExtResource( 10 )
 
-[node name="band3" type="Sprite" parent="Body"]
+[node name="band3" type="Sprite" parent="RigBody/Body"]
 visible = false
 position = Vector2( -0.0624983, 0.3125 )
 rotation = 0.760963
 scale = Vector2( 0.70513, 0.692229 )
 texture = ExtResource( 10 )
 
-[node name="band1_side" type="Sprite" parent="Body"]
+[node name="band1_side" type="Sprite" parent="RigBody/Body"]
 visible = false
 position = Vector2( -0.315334, 1.89202 )
 scale = Vector2( 0.704372, 0.710942 )
 texture = ExtResource( 10 )
 
-[node name="band2_side" type="Sprite" parent="Body"]
+[node name="band2_side" type="Sprite" parent="RigBody/Body"]
 visible = false
 position = Vector2( 0.105113, 1.15624 )
 rotation = 1.5708
 scale = Vector2( 0.73065, 0.717511 )
 texture = ExtResource( 10 )
 
-[node name="band3_side" type="Sprite" parent="Body"]
+[node name="band3_side" type="Sprite" parent="RigBody/Body"]
 visible = false
 position = Vector2( -0.00994301, 0.680394 )
 rotation = 0.760963
 scale = Vector2( 0.514719, 0.506367 )
 texture = ExtResource( 10 )
 
-[node name="Head" type="Sprite" parent="."]
-position = Vector2( 0.19603, -23.0633 )
+[node name="Head" type="Sprite" parent="RigBody"]
+position = Vector2( 0.175008, -22.7164 )
 texture = ExtResource( 5 )
 
-[node name="Hair" type="Sprite" parent="Head"]
+[node name="Hair" type="Sprite" parent="RigBody/Head"]
 position = Vector2( -0.19603, 0.0632935 )
 texture = ExtResource( 6 )
 
-[node name="Face" type="Sprite" parent="Head"]
+[node name="Face" type="Sprite" parent="RigBody/Head"]
 position = Vector2( -0.19603, 2.06329 )
 texture = ExtResource( 4 )
 
-[node name="Hand_R" type="Sprite" parent="."]
-position = Vector2( 13, 8 )
+[node name="Hand_R" type="Sprite" parent="RigBody"]
+position = Vector2( 12.979, 8.15767 )
 texture = ExtResource( 3 )
 
-[node name="Hand_L" type="Sprite" parent="."]
-position = Vector2( -13, 8 )
+[node name="Hand_L" type="Sprite" parent="RigBody"]
+position = Vector2( -12.9054, 7.95795 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -319,11 +346,11 @@ shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/attack_down = SubResource( 2 )
-anims/attack_left = SubResource( 3 )
-anims/attack_right = SubResource( 4 )
-anims/attack_up = SubResource( 5 )
-anims/dead = SubResource( 6 )
+anims/attack_down = SubResource( 12 )
+anims/attack_left = SubResource( 13 )
+anims/attack_right = SubResource( 14 )
+anims/attack_up = SubResource( 15 )
+anims/dead = SubResource( 16 )
 anims/dying = SubResource( 7 )
 anims/idle_down = SubResource( 8 )
 anims/idle_left = SubResource( 9 )

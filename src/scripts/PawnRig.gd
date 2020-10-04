@@ -44,20 +44,20 @@ var handled_attack: bool = false
 export(float) var AlertTime: float = 0.0
 export(IconType) var AlertType = IconType.Alert
 
-onready var Body: Sprite = get_node("Body")
-onready var Head: Sprite = get_node("Head")
-onready var Hand_L: Sprite = get_node("Hand_L")
-onready var Hand_R: Sprite = get_node("Hand_R")
-onready var Hair: Sprite = get_node("Head/Hair")
-onready var Face: Sprite = get_node("Head/Face")
+onready var Body: Sprite = get_node("RigBody/Body")
+onready var Head: Sprite = get_node("RigBody/Head")
+onready var Hand_L: Sprite = get_node("RigBody/Hand_L")
+onready var Hand_R: Sprite = get_node("RigBody/Hand_R")
+onready var Hair: Sprite = get_node("RigBody/Head/Hair")
+onready var Face: Sprite = get_node("RigBody/Head/Face")
 onready var Anim: AnimationPlayer = get_node("Animation")
 
-onready var band1: Sprite = get_node("Body/band1")
-onready var band2: Sprite = get_node("Body/band2")
-onready var band3: Sprite = get_node("Body/band3")
-onready var band1Side: Sprite = get_node("Body/band1_side")
-onready var band2Side: Sprite = get_node("Body/band2_side")
-onready var band3Side: Sprite = get_node("Body/band3_side")
+onready var band1: Sprite = get_node("RigBody/Body/band1")
+onready var band2: Sprite = get_node("RigBody/Body/band2")
+onready var band3: Sprite = get_node("RigBody/Body/band3")
+onready var band1Side: Sprite = get_node("RigBody/Body/band1_side")
+onready var band2Side: Sprite = get_node("RigBody/Body/band2_side")
+onready var band3Side: Sprite = get_node("RigBody/Body/band3_side")
 onready var Icon: Sprite = get_node("Icon")
 
 func band_hit():
