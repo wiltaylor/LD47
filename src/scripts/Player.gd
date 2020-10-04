@@ -6,12 +6,15 @@ export(int) var ammo: int = 10;
 export(int) var maxAmmo: int = 10;
 export(bool) var hasBlueCard = false
 export(bool) var hasRedCard = false
+export(int) var MaxHP = 3
 
 onready var rig = get_node("PawnRig")
 onready var globalState = get_tree().get_root().find_node("GlobalState", true, false)
 
 var useable: Node = null
 var loaded_sprites = false
+
+var isDead = false
 
 func EnterUseRange(node: Node):
 	useable = node
@@ -32,10 +35,12 @@ func _process(delta):
 	if !loaded_sprites:
 		load_correct_sprites()
 		loaded_sprites = true	
+		
+	if isDead:
+		return
 	
 	var vel = Vector2(0,0)
-	
-	
+		
 	if Input.is_action_pressed("move_down"):
 		vel.y += speed * delta
 			
@@ -57,6 +62,10 @@ func _process(delta):
 			useable.use()
 	
 	rig.move(vel)
+	
+	if rig.Bands > MaxHP:
+		rig.death = true
+		isDead = true
 
 func load_correct_sprites():
 	
