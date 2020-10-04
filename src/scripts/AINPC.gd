@@ -28,10 +28,12 @@ var lastKnownPoint: Vector2
 var coolDown = 0
 var currentPath = PoolVector2Array()
 var bossLevelChangeTimeout = 3
+var canTakeHits = 4
 
 func _ready():
 	rng.randomize()
 	load_correct_sprites()
+	set_unit_stats()
 
 
 func doWait(delta):	
@@ -131,6 +133,16 @@ func correctVisionConeDirection():
 		visionCone.rotation_degrees = -90
 
 
+func set_unit_stats():
+	if UnitType == AIUnitType.Grunt:
+		canTakeHits = 2
+	elif UnitType == AIUnitType.Veteran:
+		canTakeHits = 3
+	elif UnitType == AIUnitType.Captain:
+		canTakeHits = 4
+	elif UnitType == AIUnitType.Boss:
+		canTakeHits = 5
+
 func load_correct_sprites():
 	
 	var spriteSetName = globalState.enemy
@@ -174,6 +186,7 @@ func _process(delta):
 		
 		if bossLevelChangeTimeout <= 0:
 			get_tree().change_scene("res://levels/Ending.tscn")
+			globalState.promote_player_to_boss()
 			return
 			
 		bossLevelChangeTimeout -= delta
@@ -181,7 +194,7 @@ func _process(delta):
 		
 	correctVisionConeDirection()
 		
-	if rig.Bands > 3:
+	if rig.Bands >= canTakeHits:
 		rig.death = true
 		State = AIState.Dead
 		return

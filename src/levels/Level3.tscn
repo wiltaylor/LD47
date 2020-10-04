@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/AINPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/RedCard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/Band_Box.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 686.59, -614.61, 688.709, -684.534, 848.689, -1073.36, 781.943, 136.55, 685.531, -427.085, 684.471, -503.366, 914.376, -1134.81, 77.3999, -1130.57, 463.044, -1170.83, 840.213, -1210.03, 240.557, -1166.59, 22.3075, -1136.93, 680.234, -109.246, 684.471, -236.381, 682.353, -42.4996, 688.709, -824.383, 83.7567, -1074.42, 688.709, -1004.49, 115.54, -1012.97, 685.531, 81.4575, 203.476, 143.966, 108.124, 92.0521, 684.471, -884.773, 727.013, -1211.09, 910.138, -1520.45, 836.137, -1440.99, 464.104, -1518.33, 727.013, -1450.53, 587.001, -1417.68, 509.661, -1418.74, 654.807, 224.485, 654.807, 559.275, 459.866, 391.88, 451.39, 313.48, 139.908, 563.513, 335.909, 401.415, 202.417, 223.425, 335.909, 313.48, 496.947, -1417.68, 461.985, -1413.44, 499.066, -1297.96, 312.6, -1278.89, 322.135, -1241.81, 245.854, -1240.75, 581.704, -1293.73, 463.044, -1265.12, -31.7247, -1459, -38.0815, -1520.45, 253.271, -1519.39, 253.271, -1408.15, -53.9739, -1132.69, -49.7356, -1217.44, 115.54, -825.443, 112.361, -875.238, 850.808, 559.275, 784.062, 562.454, 684.471, -312.663, 112.361, -684.534, 118.718, -624.145, 117.659, -298.89, 116.599, -240.619, 115.54, -430.263, 115.54, -500.188, 20.3511, 160.918, 18.0697, 564.572, -55.0333, 565.632, -50.7954, -1076.54, 18.0697, -1079.71, -97.4115, -1217.44, -94.233, -1451.59, 106.005, -106.068, 139.908, 139.728, 118.718, -52.0348 )
@@ -28,8 +29,7 @@ LockType = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 397.773, 529.973 )
-ammo = 100
-maxAmmo = 100
+maxAmmo = 20
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -45,12 +45,15 @@ UnitType = 3
 
 [node name="AINPC2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 809.525, 354.853 )
+UnitType = 1
 
 [node name="AINPC3" parent="." instance=ExtResource( 4 )]
 position = Vector2( -20.542, 377.448 )
+UnitType = 1
 
 [node name="AINPC4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 395.68, 270.419 )
+UnitType = 2
 
 [node name="AINPC5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 585.954, 117.012 )
@@ -66,6 +69,7 @@ position = Vector2( 546.71, -276.616 )
 
 [node name="AINPC9" parent="." instance=ExtResource( 4 )]
 position = Vector2( 373.086, -68.5048 )
+UnitType = 1
 
 [node name="AINPC10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 226.813, -463.321 )
@@ -75,6 +79,7 @@ position = Vector2( 626.387, -456.186 )
 
 [node name="AINPC12" parent="." instance=ExtResource( 4 )]
 position = Vector2( 413.519, -474.024 )
+UnitType = 1
 
 [node name="AINPC13" parent="." instance=ExtResource( 4 )]
 position = Vector2( 236.327, -648.838 )
@@ -87,15 +92,62 @@ position = Vector2( 388.545, -851.003 )
 
 [node name="AINPC16" parent="." instance=ExtResource( 4 )]
 position = Vector2( 13.9452, -1017.49 )
+UnitType = 2
 
 [node name="AINPC17" parent="." instance=ExtResource( 4 )]
 position = Vector2( 748.875, -937.815 )
 
 [node name="AINPC18" parent="." instance=ExtResource( 4 )]
 position = Vector2( 637.09, -1048.41 )
+UnitType = 1
 
 [node name="AINPC19" parent="." instance=ExtResource( 4 )]
 position = Vector2( -6.27136, -173.155 )
 
 [node name="AINPC20" parent="." instance=ExtResource( 4 )]
 position = Vector2( 754.821, -205.264 )
+
+[node name="Band_Box" parent="." instance=ExtResource( 6 )]
+position = Vector2( 174.08, 537.016 )
+
+[node name="Band_Box2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -28.0852, 540.584 )
+
+[node name="Band_Box3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 628.357, 537.016 )
+
+[node name="Band_Box4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 622.411, 245.661 )
+
+[node name="Band_Box5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 824.576, 525.124 )
+
+[node name="Band_Box6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 507.058, -78.9927 )
+
+[node name="Band_Box7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 224.027, -71.8575 )
+
+[node name="Band_Box8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 389.326, -269.266 )
+
+[node name="Band_Box9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 426.192, -649.812 )
+
+[node name="Band_Box10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 207.378, -859.112 )
+
+[node name="Band_Box11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 620.032, -857.923 )
+
+[node name="Band_Box12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 822.198, -1008.95 )
+
+[node name="Band_Box" parent="Band_Box12" instance=ExtResource( 6 )]
+position = Vector2( -896.662, -267.572 )
+
+[node name="Band_Box2" parent="Band_Box12" instance=ExtResource( 6 )]
+position = Vector2( -890.716, -388.871 )
+
+[node name="Band_Box3" parent="Band_Box12" instance=ExtResource( 6 )]
+position = Vector2( 59.4604, -482.818 )

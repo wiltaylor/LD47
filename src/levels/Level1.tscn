@@ -71,7 +71,6 @@ position = Vector2( 707.802, -1700.69 )
 
 [node name="AINPC" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( -302.198, 215.309 )
-UnitType = 1
 
 [node name="AINPC2" parent="TileMap" instance=ExtResource( 4 )]
 position = Vector2( -1422.2, 327.309 )

@@ -5,7 +5,6 @@
 
 [node name="AINPC" type="Node2D"]
 script = ExtResource( 2 )
-WaitingTurnRate = 5.0
 LookingDuration = 8.0
 
 [node name="PawnRig" parent="." instance=ExtResource( 1 )]
