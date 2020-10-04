@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/face_right.png-3d60f1ca4a4c0abb4c19d4d02fae4c16.stex"
+path="res://.import/face-right.png-522531245c0e24e7659dc7c9a4f4954a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/charecters/kungfu/captain/face_right.png"
-dest_files=[ "res://.import/face_right.png-3d60f1ca4a4c0abb4c19d4d02fae4c16.stex" ]
+source_file="res://sprites/charecters/business/captain/face-right.png"
+dest_files=[ "res://.import/face-right.png-522531245c0e24e7659dc7c9a4f4954a.stex" ]
 
 [params]
 
